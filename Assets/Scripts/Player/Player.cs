@@ -24,8 +24,14 @@ public class Player : MonoBehaviour {
 
     private Quaternion targetModelRotation;
 
-	// Use this for initialization
-	void Start () {
+
+    [Header("Equipment")]
+    public Sword sword;
+
+
+
+    // Use this for initialization
+    void Start () {
 
         playerRigidBody = GetComponent<Rigidbody>();
 
@@ -143,6 +149,15 @@ public class Player : MonoBehaviour {
                 );
 
         }
+
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+
+            sword.Attack();
+
+        }
+
 
     }
 
