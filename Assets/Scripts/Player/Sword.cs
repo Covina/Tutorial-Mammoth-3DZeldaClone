@@ -7,7 +7,7 @@ public class Sword : MonoBehaviour {
     [Header("Sword Speeds")]
     public float swordSwingSpeed = 10.0f;
 
-    public float attackDuration = 0.35f;
+    public float attackDuration = 1.0f;
 
     public float cooldownSpeed = 2.0f;
     public float cooldownDuration = 0.5f;
@@ -15,6 +15,8 @@ public class Sword : MonoBehaviour {
     private Quaternion targetRotation;
 
     private float cooldownTimer;
+
+    private bool isAttacking = false;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +29,8 @@ public class Sword : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, swordSwingSpeed * Time.deltaTime);
+        // determine whether to attack and cooldown
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * (isAttacking ? swordSwingSpeed : cooldownSpeed) );
 
         cooldownTimer -= Time.deltaTime;
 	}
@@ -43,8 +46,11 @@ public class Sword : MonoBehaviour {
             return;
         }
 
-        // rotate sword
+        // Swing the sword by rotating it
         targetRotation = Quaternion.Euler(90, 0, 0);
+
+
+        // check for collisions
 
         // reset cooldown timer
         cooldownTimer = cooldownDuration;
@@ -57,8 +63,12 @@ public class Sword : MonoBehaviour {
 
     private IEnumerator CooldownWait()
     {
+        isAttacking = true;
+
         // Wait some time after attack
         yield return new WaitForSeconds(attackDuration);
+
+        isAttacking = false;
 
         // Set return position for the sword
         targetRotation = Quaternion.Euler(0, 0, 0);
