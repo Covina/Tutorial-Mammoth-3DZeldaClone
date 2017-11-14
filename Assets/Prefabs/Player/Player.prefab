@@ -303,7 +303,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1088793107291516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04857, z: 3.465}
+  m_LocalPosition: {x: 0, y: 0.04857, z: -0.325}
   m_LocalScale: {x: 0.01, y: 2.357324, z: 0.010000009}
   m_Children: []
   m_Father: {fileID: 4353127896738520}
@@ -316,7 +316,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1208167589534822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0534, z: 3.7719}
+  m_LocalPosition: {x: -0, y: 0.0534, z: 0}
   m_LocalScale: {x: 0.050000016, y: 1.8293223, z: 0.06801746}
   m_Children: []
   m_Father: {fileID: 4353127896738520}
@@ -359,7 +359,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709179783434402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.626, y: 0.124, z: 0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4293893958887024}
@@ -389,7 +389,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1318620169996324}
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 1.116, z: 3.604}
+  m_LocalPosition: {x: 0, y: 1.116, z: -0.175}
   m_LocalScale: {x: 0.050000004, y: 0.5, z: 0.06802}
   m_Children: []
   m_Father: {fileID: 4353127896738520}
@@ -430,7 +430,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354042700013346}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: -1.009, z: 3.603}
+  m_LocalPosition: {x: 0, y: -1.009, z: -0.18}
   m_LocalScale: {x: 0.050000004, y: 0.5, z: 0.06802}
   m_Children: []
   m_Father: {fileID: 4353127896738520}
@@ -885,7 +885,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1026725151902150}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.12535346, y: 1.6993217, z: 0.113140605}
@@ -961,6 +961,7 @@ MonoBehaviour:
   BombAmount: 5
   throwingSpeed: 200
   bow: {fileID: 114753625124797816}
+  arrowAmount: 15
 --- !u!114 &114753625124797816
 MonoBehaviour:
   m_ObjectHideFlags: 1

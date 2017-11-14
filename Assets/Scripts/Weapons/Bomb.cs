@@ -59,7 +59,11 @@ public class Bomb : MonoBehaviour {
         foreach (Collider collider in hitObjects)
         {
 
-            //Debug.Log(collider.name + " was hit.");
+            // we hit an enemy!
+            if(collider.GetComponent<Enemy>() != null)
+            {
+                collider.GetComponent<Enemy>().Hit();
+            }
 
         }
 
