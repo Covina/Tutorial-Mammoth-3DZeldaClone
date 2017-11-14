@@ -17,6 +17,11 @@ public class Sword : MonoBehaviour {
     private float cooldownTimer;
 
     private bool isAttacking = false;
+    public bool IsAttacking
+    {
+        get { return isAttacking; }
+        set { isAttacking = value; }
+    }
 
 	// Use this for initialization
 	void Start () {

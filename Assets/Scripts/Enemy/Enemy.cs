@@ -29,8 +29,13 @@ public class Enemy : MonoBehaviour {
         // If enemy was hit with sword, then run the hit function
         if (other.GetComponent<Sword>() != null)
         {
-            Debug.Log("Enemy :: Sword Hit detected");
-            Hit();
+            // Check that we are actively attacking to correct for collisions
+            if (other.GetComponent<Sword>().IsAttacking == true)
+            {
+                //Debug.Log("Enemy :: Sword Hit detected");
+                Hit();
+
+            }
 
         } else if (other.GetComponent<Arrow>() != null)
         {
