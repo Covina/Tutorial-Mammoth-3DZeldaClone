@@ -24,13 +24,13 @@ public class Enemy : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
 
-        Debug.Log("Enemy :: Collision with [" + other.gameObject.name + "]");
+        //Debug.Log("Enemy :: Collision with [" + other.gameObject.name + "]");
 
         // If enemy was hit with sword, then run the hit function
         if (other.GetComponent<Sword>() != null)
         {
 
-            Debug.Log("Enemy :: Sword Hit detected");
+            //Debug.Log("Enemy :: Sword Hit detected");
 
             // Check that we are actively attacking to correct for collisions
             if (other.GetComponent<Sword>().IsAttacking == true)
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour {
 
         } else if (other.GetComponent<Arrow>() != null)
         {
-            Debug.Log("Enemy :: Arrow Hit detected");
+            //Debug.Log("Enemy :: Arrow Hit detected");
             Hit();
 
             // destroy the arrow as it hits the Enemy

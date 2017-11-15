@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     // Reference to the body and eyes model
     [SerializeField] private GameObject model;
 
+    [Header("Stats")]
+    public int health = 10;
 
     [Header("Movement")]
     [SerializeField] private float playerRotationSpeed = 10.0f;
@@ -31,8 +33,8 @@ public class Player : MonoBehaviour {
     public int arrowAmount = 15;
 
 
+
     // Private Member Variables
-    private int health = 10;
     private float knockbackTimer;
 
     // Track whether to process jump
@@ -255,7 +257,7 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        Debug.Log("Player OnTriggerEnter :: Collided with [" + other.gameObject.name + "]");
+        //Debug.Log("Player OnTriggerEnter :: Collided with [" + other.gameObject.name + "]");
 
         // 
         if (other.GetComponent<EnemyBullet>() != null)
@@ -273,7 +275,7 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
 
-        Debug.Log("Player OnCollisionEnter :: Collided with [" + collision.gameObject.name + "]");
+        //Debug.Log("Player OnCollisionEnter :: Collided with [" + collision.gameObject.name + "]");
 
         // 
         if (collision.gameObject.GetComponent<Enemy>() != null)
@@ -297,11 +299,11 @@ public class Player : MonoBehaviour {
 
         knockbackTimer = 1f;
 
-        //health--;
+        health--;
 
         if(health <= 0)
         {
-            Debug.Log("Player has died.");
+            //Debug.Log("Player has died.");
 
             Destroy(gameObject);
         }
