@@ -263,10 +263,13 @@ public class Player : MonoBehaviour {
         if (other.GetComponent<EnemyBullet>() != null)
         {
             // Get the direction that the bullet was heading in
-            Vector3 sourceDirection = (transform.position = other.transform.position).normalized;
+            Vector3 sourceDirection = (transform.position - other.transform.position).normalized;
 
             //
             Hit(sourceDirection);
+
+            // Destroy the bullet
+            Destroy(other.gameObject);
         }
 
     }
@@ -282,7 +285,7 @@ public class Player : MonoBehaviour {
         {
 
             // Get the direction that the bullet was heading in
-            Vector3 sourceDirection = (transform.position = collision.transform.position).normalized;
+            Vector3 sourceDirection = (transform.position - collision.transform.position).normalized;
 
             Hit(sourceDirection);
         }
