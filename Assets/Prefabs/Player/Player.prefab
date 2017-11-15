@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4124904594728290}
   - component: {fileID: 33366828824930974}
-  - component: {fileID: 65963391962809370}
   - component: {fileID: 23157954988328092}
   m_Layer: 0
   m_Name: BowString
@@ -55,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4293893958887024}
   - component: {fileID: 33694279073455664}
-  - component: {fileID: 65725679199354982}
   - component: {fileID: 23807614576117136}
   m_Layer: 0
   m_Name: BowMainShaft
@@ -90,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4835191438618748}
   - component: {fileID: 33050097101514720}
-  - component: {fileID: 136781604944399690}
   - component: {fileID: 23608089635414118}
   m_Layer: 0
   m_Name: Body
@@ -125,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4493818463051946}
   - component: {fileID: 33082453537453774}
-  - component: {fileID: 65173404139189526}
   - component: {fileID: 23383886353516624}
   m_Layer: 0
   m_Name: BowTop
@@ -143,7 +139,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4881699834336368}
   - component: {fileID: 33625852223339444}
-  - component: {fileID: 65278796590555042}
   - component: {fileID: 23648356590115838}
   m_Layer: 0
   m_Name: BowBottom
@@ -161,7 +156,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4421810106061534}
   - component: {fileID: 33708842606100736}
-  - component: {fileID: 135781131407467634}
   - component: {fileID: 23115174487842194}
   m_Layer: 0
   m_Name: Eye Left
@@ -194,7 +188,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4039094408274496}
   - component: {fileID: 33346292668718306}
-  - component: {fileID: 135976563925706254}
   - component: {fileID: 23480908287059942}
   m_Layer: 0
   m_Name: Eye Right
@@ -329,7 +322,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906676923302698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: -6.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4309153664732040}
@@ -854,30 +847,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65173404139189526
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318620169996324}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65278796590555042
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1354042700013346}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65527216588669112
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -890,18 +859,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 1.75, z: 0.2}
   m_Center: {x: 0, y: 0.56, z: 0}
---- !u!65 &65725679199354982
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1208167589534822}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65913192830693670
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -913,18 +870,6 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65963391962809370
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1088793107291516}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114276217446759558
 MonoBehaviour:
@@ -956,6 +901,7 @@ MonoBehaviour:
   playerRotationSpeed: 10
   playerMovementVelocity: 5
   playerJumpVelocity: 5
+  knockbackForce: 150
   sword: {fileID: 114276217446759558}
   bombPrefab: {fileID: 1011959438986570, guid: 59c723e0e6b93cc408af057f3633a190, type: 2}
   BombAmount: 5
@@ -975,40 +921,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 1756292327300964, guid: daec2d552a52dc048a32451154e98ae2,
     type: 2}
---- !u!135 &135781131407467634
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1394579626211096}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135976563925706254
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534713191531540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136781604944399690
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1283991274690106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

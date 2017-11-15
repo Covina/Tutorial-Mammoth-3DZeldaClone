@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    [Header("Model Movement")]
+    [Header("Visuals")]
 
     // Reference to the body and eyes model
     [SerializeField] private GameObject model;
 
+
+    [Header("Movement")]
     [SerializeField] private float playerRotationSpeed = 10.0f;
 
     // Movement Speed
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour {
 
     // Jumping force
     [SerializeField] private float playerJumpVelocity = 5.0f;
+
+    [SerializeField] private float knockbackForce = 200.0f;
 
 
     [Header("Equipment")]
@@ -25,7 +29,11 @@ public class Player : MonoBehaviour {
     public float throwingSpeed = 1.0f;
     public Bow bow;
     public int arrowAmount = 15;
-    
+
+
+    // Private Member Variables
+    private int health = 10;
+    private float knockbackTimer;
 
     // Track whether to process jump
     private bool playerCanJump = false;
@@ -35,7 +43,6 @@ public class Player : MonoBehaviour {
 
     // holder for which direction we're turning toward
     private Quaternion targetModelRotation;
-
 
 
 
@@ -68,8 +75,16 @@ public class Player : MonoBehaviour {
         // turn the player toward the target destination
         model.transform.rotation = Quaternion.Lerp(model.transform.rotation, targetModelRotation, playerRotationSpeed * Time.deltaTime);
 
-        // Process any player-related movement input
-        ProcessPlayerMovement();
+        // Check if player was hit and is flying backwards for a moment
+        if(knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+        } else
+        {
+            // Process any player-related movement input
+            ProcessPlayerMovement();
+
+        }
 
     }
 
@@ -204,10 +219,6 @@ public class Player : MonoBehaviour {
 
         }
 
-
-
-
-
     }
 
 
@@ -222,8 +233,6 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        // Reduce inventory by 1
-        BombAmount--;
 
         // Create the bomb
         GameObject bombObject = Instantiate(bombPrefab);
@@ -236,6 +245,67 @@ public class Player : MonoBehaviour {
 
         // Throw the object
         bombObject.GetComponent<Rigidbody>().AddForce(throwingDirection * throwingSpeed);
+
+        // Reduce inventory by 1
+        BombAmount--;
+
+    }
+
+    // Track Trigger collisions
+    private void OnTriggerEnter(Collider other)
+    {
+
+        Debug.Log("Player OnTriggerEnter :: Collided with [" + other.gameObject.name + "]");
+
+        // 
+        if (other.GetComponent<EnemyBullet>() != null)
+        {
+            // Get the direction that the bullet was heading in
+            Vector3 sourceDirection = (transform.position = other.transform.position).normalized;
+
+            //
+            Hit(sourceDirection);
+        }
+
+    }
+
+    // Track Physical Collisions
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        Debug.Log("Player OnCollisionEnter :: Collided with [" + collision.gameObject.name + "]");
+
+        // 
+        if (collision.gameObject.GetComponent<Enemy>() != null)
+        {
+
+            // Get the direction that the bullet was heading in
+            Vector3 sourceDirection = (transform.position = collision.transform.position).normalized;
+
+            Hit(sourceDirection);
+        }
+    }
+
+
+    private void Hit(Vector3 sourceDirection)
+    {
+
+        // calculate for Player Knockback effect
+        Vector3 knockbackDirection = (sourceDirection + Vector3.up).normalized;
+
+        playerRigidBody.AddForce(knockbackDirection * knockbackForce);
+
+        knockbackTimer = 1f;
+
+        //health--;
+
+        if(health <= 0)
+        {
+            Debug.Log("Player has died.");
+
+            Destroy(gameObject);
+        }
+
     }
 
 }
