@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameCamera : MonoBehaviour {
 
-    public GameObject target;
+    public Player player;
 
     public Vector3 cameraOffset;
 
@@ -18,9 +18,19 @@ public class GameCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(target != null)
+        if(player != null)
         {
-            transform.position = Vector3.Lerp(transform.position, target.transform.position + cameraOffset, focusSpeed * Time.deltaTime);
+
+
+            transform.position = Vector3.Lerp(transform.position, player.transform.position + cameraOffset, focusSpeed * Time.deltaTime);
+
+            // if there was a telportation, instantly move the camera
+            if(player.JustTeleported)
+            {
+                transform.position = player.transform.position + cameraOffset;
+            }
+
+
         }
         
             

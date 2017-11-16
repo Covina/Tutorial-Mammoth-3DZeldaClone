@@ -33,6 +33,19 @@ public class Player : MonoBehaviour {
     public int arrowAmount = 15;
 
 
+    private bool justTeleported = false;
+    public bool JustTeleported
+    {
+        get {
+            
+            bool returnValue = justTeleported;  // Store current value
+            justTeleported = false;             // Set value to false
+            return returnValue;                 // 
+        }
+        set {
+            justTeleported = value;
+        }
+    }
 
     // Private Member Variables
     private float knockbackTimer;
@@ -310,6 +323,16 @@ public class Player : MonoBehaviour {
 
             Destroy(gameObject);
         }
+
+    }
+
+
+    public void Teleport(Vector3 target)
+    {
+
+        transform.position = target;
+        justTeleported = true;
+
 
     }
 
