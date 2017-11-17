@@ -13,6 +13,8 @@ public class ShootingEnemy : Enemy {
     // How quickly the enemy turns
     public float rotationSpeedInTime = 3.0f;
 
+    public bool rotateClockwise = true;
+
     // Prep for rotation information
     private Quaternion targetRotation;
     private int targetAngle;
@@ -47,7 +49,7 @@ public class ShootingEnemy : Enemy {
             rotationTimer = timeUntilRotate;
 
             // Angle direction change
-            targetAngle += 90;
+            targetAngle += (rotateClockwise ? 90 : -90);
         }
 
         // Turn the enemy
