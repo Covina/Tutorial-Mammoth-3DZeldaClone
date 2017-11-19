@@ -24,6 +24,7 @@ public class ShootingEnemy : Enemy {
 
     [Header("Projectile")]
     public GameObject bulletPrefab;
+    public GameObject bulletSpawnPoint;
     public float timeUntilShoot = 1.0f;
     private float shootTimer;
 
@@ -67,7 +68,8 @@ public class ShootingEnemy : Enemy {
             GameObject bulletObject = Instantiate(bulletPrefab);
 
             // set direction it faces
-            bulletObject.transform.position = transform.position + model.transform.forward;
+            bulletObject.transform.position = bulletSpawnPoint.transform.position;
+            
 
             // set the bullet forward position to the model's forward position
             bulletObject.transform.forward = model.transform.forward;
