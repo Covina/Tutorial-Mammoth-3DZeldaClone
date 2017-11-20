@@ -16,8 +16,14 @@ public class PatrollingLogic : MonoBehaviour {
     public float movementSpeed;
 
 
+    public GameObject model;
+
+
     private int directionIndex;
     private float directionTimer;
+
+
+    private int targetDirection;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +57,9 @@ public class PatrollingLogic : MonoBehaviour {
             }
 
         }
+
+        // point model in the correct direction
+        model.transform.forward = directions[directionIndex];
 
         // Set direction 
         GetComponent<Rigidbody>().velocity = new Vector3(

@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
     [Header("Equipment")]
     public Sword sword;
     public GameObject bombPrefab;
+    public GameObject quiver;
     public int BombAmount = 5;
     public float throwingSpeed = 1.0f;
     public Bow bow;
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour {
 
         // Start player with sword showing
         bow.gameObject.SetActive(false);
+        quiver.gameObject.SetActive(false);
 
         // Store the orinal position
         originalPlayerAnimatorPosition = playerAnimator.transform.localPosition;
@@ -233,6 +235,7 @@ public class Player : MonoBehaviour {
             // using the Sword
             sword.gameObject.SetActive(true);
             bow.gameObject.SetActive(false);
+            quiver.gameObject.SetActive(false);
 
             sword.Attack();
 
@@ -255,6 +258,7 @@ public class Player : MonoBehaviour {
                 // using the Bow
                 sword.gameObject.SetActive(false);
                 bow.gameObject.SetActive(true);
+                quiver.gameObject.SetActive(true);
 
                 bow.Attack();
 

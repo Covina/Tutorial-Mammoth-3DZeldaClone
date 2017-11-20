@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1756292327300964}
   m_IsPrefabParent: 1
+--- !u!1 &1422769998155408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4539216435256300}
+  - component: {fileID: 33553072619308434}
+  - component: {fileID: 23273787868380948}
+  m_Layer: 0
+  m_Name: ArrowModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1756292327300964
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,23 +46,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1917341601396672
-GameObject:
-  m_ObjectHideFlags: 0
+--- !u!4 &4539216435256300
+Transform:
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4857734491149248}
-  - component: {fileID: 33294997295500800}
-  - component: {fileID: 23847660270449564}
-  m_Layer: 0
-  m_Name: ArrowBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_GameObject: {fileID: 1422769998155408}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 47.6822, y: 0.65713996, z: 0.65713996}
+  m_Children: []
+  m_Father: {fileID: 4767236419727728}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4767236419727728
 Transform:
   m_ObjectHideFlags: 1
@@ -53,32 +66,19 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1756292327300964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 155.38089, y: -0.00000023841858, z: 163.24913}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4857734491149248}
+  - {fileID: 4539216435256300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4857734491149248
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1917341601396672}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1.0000005}
-  m_Children: []
-  m_Father: {fileID: 4767236419727728}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23847660270449564
+--- !u!23 &23273787868380948
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1917341601396672}
+  m_GameObject: {fileID: 1422769998155408}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,7 +86,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a2c2ff40d9a07d94d95f05309d1c9a0e, type: 2}
+  - {fileID: 2100000, guid: 83fe5a843a41d43d8a3d38d709e66052, type: 2}
+  - {fileID: 2100000, guid: ceef92de02d8743cfb16441eac4f20b3, type: 2}
+  - {fileID: 2100000, guid: 5296ca596bd5e46c2ba6925fdda685f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +96,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
@@ -105,13 +107,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33294997295500800
+--- !u!33 &33553072619308434
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1917341601396672}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_GameObject: {fileID: 1422769998155408}
+  m_Mesh: {fileID: 4300000, guid: 7d93fded3f1e94fc0ae38875fb5fff18, type: 3}
 --- !u!54 &54359704707718050
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -150,5 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8098526c7f38a7d47853f4f571f0d92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowSpeed: 50
+  arrowSpeed: 35
   arrowLifetime: 2

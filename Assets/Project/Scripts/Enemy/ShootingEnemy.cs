@@ -28,14 +28,14 @@ public class ShootingEnemy : Enemy {
     public float timeUntilShoot = 1.0f;
     private float shootTimer;
 
-
     // Use this for initialization
-    void Start () {
+    void Awake () {
 
         // init at full time
         rotationTimer = timeUntilRotate;
         shootTimer = timeUntilShoot;
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -56,7 +56,6 @@ public class ShootingEnemy : Enemy {
         // Turn the enemy
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, targetAngle, 0), rotationSpeedInTime * Time.deltaTime);
 
-
         // Shoot bullets
         shootTimer -= Time.deltaTime;
 
@@ -64,7 +63,8 @@ public class ShootingEnemy : Enemy {
         {
             shootTimer = timeUntilShoot;
 
-            // Spawn the obejct
+            
+            // Spawn the object
             GameObject bulletObject = Instantiate(bulletPrefab);
 
             // set direction it faces
@@ -73,7 +73,7 @@ public class ShootingEnemy : Enemy {
 
             // set the bullet forward position to the model's forward position
             bulletObject.transform.forward = model.transform.forward;
-
+            
 
 
         }

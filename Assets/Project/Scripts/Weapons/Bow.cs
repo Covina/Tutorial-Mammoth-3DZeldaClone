@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour {
 
+    public GameObject playerModel;
     public GameObject arrowPrefab;
     
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void Attack()
     {
@@ -23,10 +14,10 @@ public class Bow : MonoBehaviour {
         GameObject arrowObject = Instantiate(arrowPrefab);
         
         // Position the arrow in line with the bow and facing outward from the bow
-        arrowObject.transform.position = transform.position + transform.forward;
+        arrowObject.transform.position = playerModel.transform.position + playerModel.transform.forward;
 
         // Set the object to face forward
-        arrowObject.transform.forward = transform.forward;
+        arrowObject.transform.forward = playerModel.transform.forward;
 
     }
 }

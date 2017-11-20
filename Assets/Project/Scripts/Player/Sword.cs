@@ -12,6 +12,10 @@ public class Sword : MonoBehaviour {
     public float cooldownSpeed = 2.0f;
     public float cooldownDuration = 0.5f;
 
+
+    public Vector3 defaultAngle;
+    public Vector3 attackAngle;
+
     private Quaternion targetRotation;
 
     private float cooldownTimer;
@@ -23,11 +27,19 @@ public class Sword : MonoBehaviour {
         set { isAttacking = value; }
     }
 
+
+    private bool justAttacked;
+    public bool JustAttacked
+    {
+        get { return justAttacked; }
+    }
+
+
 	// Use this for initialization
 	void Start () {
 
         // initialize
-        targetRotation = Quaternion.Euler(0, 0, 0);
+        targetRotation = Quaternion.Euler(defaultAngle);
 
 	}
 	
@@ -52,7 +64,7 @@ public class Sword : MonoBehaviour {
         }
 
         // Swing the sword by rotating it
-        targetRotation = Quaternion.Euler(90, 0, 0);
+        targetRotation = Quaternion.Euler(attackAngle);
 
 
         // check for collisions
@@ -69,6 +81,11 @@ public class Sword : MonoBehaviour {
     private IEnumerator CooldownWait()
     {
         isAttacking = true;
+        justAttacked = true;
+
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        justAttacked = false;
 
         // Wait some time after attack
         yield return new WaitForSeconds(attackDuration);
@@ -76,7 +93,7 @@ public class Sword : MonoBehaviour {
         isAttacking = false;
 
         // Set return position for the sword
-        targetRotation = Quaternion.Euler(0, 0, 0);
+        targetRotation = Quaternion.Euler(defaultAngle);
 
     }
 
