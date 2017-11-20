@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 
     // Reference to the body and eyes model
     [SerializeField] private GameObject model;
+    public Animator playerAnimator;
 
     [Header("Stats")]
     public int health = 10;
@@ -59,6 +60,8 @@ public class Player : MonoBehaviour {
     // holder for which direction we're turning toward
     private Quaternion targetModelRotation;
 
+    //
+    private Vector3 originalPlayerAnimatorPosition;
 
 
     // Use this for initialization
@@ -73,6 +76,9 @@ public class Player : MonoBehaviour {
         // Start player with sword showing
         bow.gameObject.SetActive(false);
 
+        // Store the orinal position
+        originalPlayerAnimatorPosition = playerAnimator.transform.localPosition;
+        //Debug.Log("originalPlayerAnimatorPosition :: " + originalPlayerAnimatorPosition);
 
     }
 	
@@ -85,22 +91,34 @@ public class Player : MonoBehaviour {
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.01f))
         {
             playerCanJump = true;
+
         }
+
+        // toggle animation for jumping
+        playerAnimator.SetBool("OnGround", playerCanJump);
+
 
         // turn the player toward the target destination
         model.transform.rotation = Quaternion.Lerp(model.transform.rotation, targetModelRotation, playerRotationSpeed * Time.deltaTime);
 
         // Check if player was hit and is flying backwards for a moment
-        if(knockbackTimer > 0)
+        if (knockbackTimer > 0)
         {
             knockbackTimer -= Time.deltaTime;
-        } else
+        }
+        else
         {
             // Process any player-related movement input
             ProcessPlayerMovement();
 
         }
 
+    }
+
+    void LateUpdate()
+    {
+        // keep the character's animator game object in place
+        playerAnimator.transform.localPosition = originalPlayerAnimatorPosition;
     }
 
     /// <summary>
@@ -117,6 +135,9 @@ public class Player : MonoBehaviour {
                 );
 
 
+        bool isPlayerMoving = false;
+
+
 
         // MOVE RIGHT
         if (Input.GetKey(KeyCode.RightArrow))
@@ -130,6 +151,8 @@ public class Player : MonoBehaviour {
 
             // Rotate the player to look right.
             targetModelRotation = Quaternion.Euler(0, 90, 0);
+
+            isPlayerMoving = true;
 
         }
 
@@ -147,6 +170,8 @@ public class Player : MonoBehaviour {
             // Look to the left
             targetModelRotation = Quaternion.Euler(0, 270, 0);
 
+            // for animations
+            isPlayerMoving = true;
         }
 
         // MOVE FORWARD
@@ -162,6 +187,8 @@ public class Player : MonoBehaviour {
             // Look to the front
             targetModelRotation = Quaternion.Euler(0, 0, 0);
 
+            // for animations
+            isPlayerMoving = true;
         }
 
         // MOVE BACKWARD
@@ -177,7 +204,12 @@ public class Player : MonoBehaviour {
             // Look to the back
             targetModelRotation = Quaternion.Euler(0, 180, 0);
 
+            // for animations
+            isPlayerMoving = true;
         }
+
+        // set forward animation
+        playerAnimator.SetFloat("Forward", isPlayerMoving ? 1.0f : 0.0f);
 
         // JUMP
         if (playerCanJump == true && Input.GetKeyDown(KeyCode.Space))
