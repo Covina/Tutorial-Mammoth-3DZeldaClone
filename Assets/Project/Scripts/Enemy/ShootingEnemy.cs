@@ -67,6 +67,9 @@ public class ShootingEnemy : Enemy {
             // Spawn the object
             GameObject bulletObject = Instantiate(bulletPrefab);
 
+            // set parent
+            bulletObject.transform.SetParent(transform.parent);
+
             // set direction it faces
             bulletObject.transform.position = bulletSpawnPoint.transform.position;
             

@@ -5,13 +5,15 @@ using UnityEngine;
 public class Dungeon : MonoBehaviour {
 
     private int enemyCount;
-    private int currentEnemyCount;
+    private Enemy[] enemies;
 
 	// Use this for initialization
 	void Start () {
 
         // get total enemies
-        enemyCount = GetComponentsInChildren<Enemy>().Length;
+        enemies = GetComponentsInChildren<Enemy>();
+        enemyCount = enemies.Length;
+
         Debug.Log("Total Enemies: " + enemyCount);
 
 	}
@@ -19,8 +21,14 @@ public class Dungeon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // get total enemies
-        currentEnemyCount = GetComponentsInChildren<Enemy>().Length;
+        int currentEnemyCount = 0;
+        foreach (Enemy enemy in enemies)
+        {
+            if(enemy != null)
+            {
+                currentEnemyCount++;
+            }
+        }
 
         Debug.Log("Current Enemies: " + currentEnemyCount);
     }

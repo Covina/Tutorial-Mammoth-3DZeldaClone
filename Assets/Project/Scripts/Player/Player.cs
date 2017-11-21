@@ -35,6 +35,8 @@ public class Player : MonoBehaviour {
     public int arrowAmount = 15;
 
 
+    private Dungeon currentDungeon;
+
     private bool justTeleported = false;
     public bool JustTeleported
     {
@@ -340,6 +342,35 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.GetComponent<Dungeon>() != null)
+        {
+            currentDungeon = other.GetComponent<Dungeon>();
+        }
+
+    }
+
+    /// <summary>
+    /// Check if player is exiting the dungeon
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Dungeon>() != null)
+        {
+            Dungeon exitDungeon = other.GetComponent<Dungeon>();
+            if(exitDungeon == currentDungeon)
+            {
+                currentDungeon = null;
+            }
+        }
+
+    }
 
     private void Hit(Vector3 sourceDirection)
     {
