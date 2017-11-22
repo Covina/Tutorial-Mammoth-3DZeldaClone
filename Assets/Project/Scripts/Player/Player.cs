@@ -33,6 +33,7 @@ public class Player : MonoBehaviour {
     public float throwingSpeed = 1.0f;
     public Bow bow;
     public int arrowAmount = 15;
+    public int orbAmount = 0;
 
 
     private Dungeon currentDungeon;
@@ -326,6 +327,12 @@ public class Player : MonoBehaviour {
 
             // Destroy the bullet
             Destroy(other.gameObject);
+        } else if (other.GetComponent<Treasure>() != null)
+        {
+            // Collected an orb
+            orbAmount++;
+            Destroy(other.gameObject);
+
         }
 
     }

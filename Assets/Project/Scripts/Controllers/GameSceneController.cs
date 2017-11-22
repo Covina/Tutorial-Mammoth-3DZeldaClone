@@ -15,6 +15,7 @@ public class GameSceneController : MonoBehaviour {
     public Text healthText;
     public Text bombText;
     public Text arrowText;
+    public Text orbText;
 
     public GameObject dungeonPanel;
     public Text dungeonInfoText;
@@ -38,10 +39,11 @@ public class GameSceneController : MonoBehaviour {
 
             }
 
-
+            // Update all the inventory
             healthText.text = "Health: " + player.health;
             bombText.text = "Bombs: " + player.BombAmount;
             arrowText.text = "Arrows: " + player.arrowAmount;
+            orbText.text = "Orbs: " + player.orbAmount;
 
             // Check for dungeon information
             Dungeon currentDungeon = player.CurrentDungeon;
