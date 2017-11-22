@@ -15,6 +15,9 @@ public class GameSceneController : MonoBehaviour {
     public Text bombText;
     public Text arrowText;
 
+    public GameObject dungeonPanel;
+    public Text dungeonInfoText;
+
 
     // Use this for initialization
     void Start () {
@@ -38,6 +41,19 @@ public class GameSceneController : MonoBehaviour {
             healthText.text = "Health: " + player.health;
             bombText.text = "Bombs: " + player.BombAmount;
             arrowText.text = "Arrows: " + player.arrowAmount;
+
+            // Check for dungeon information
+            Dungeon currentDungeon = player.CurrentDungeon;
+            dungeonPanel.SetActive(currentDungeon != null);
+
+            if(currentDungeon != null)
+            {
+                // cast one to float to force result to return float
+                float clearPercentage = (float)(currentDungeon.EnemyCount - currentDungeon.CurrentEnemyCount) / currentDungeon.EnemyCount;
+
+                //Debug.Log(currentDungeon.EnemyCount + "," + currentDungeon.CurrentEnemyCount + "," + clearPercentage);
+                dungeonInfoText.text = "Progress: " + Mathf.FloorToInt(clearPercentage * 100) + " %";
+            }
 
         } else
         {

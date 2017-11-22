@@ -36,6 +36,11 @@ public class Player : MonoBehaviour {
 
 
     private Dungeon currentDungeon;
+    public Dungeon CurrentDungeon
+    {
+        get { return currentDungeon; }
+    }
+
 
     private bool justTeleported = false;
     public bool JustTeleported

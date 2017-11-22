@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class Dungeon : MonoBehaviour {
 
-    private int enemyCount;
     private Enemy[] enemies;
 
-	// Use this for initialization
-	void Start () {
+    private int enemyCount;
+    public int EnemyCount
+    {
+        get { return enemyCount; }
+    }
+
+    private int currentEnemyCount = 0;
+    public int CurrentEnemyCount
+    {
+        get { return currentEnemyCount; }
+    }
+
+    // Use this for initialization
+    void Start () {
 
         // get total enemies
         enemies = GetComponentsInChildren<Enemy>();
@@ -21,7 +32,7 @@ public class Dungeon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        int currentEnemyCount = 0;
+        currentEnemyCount = 0;
         foreach (Enemy enemy in enemies)
         {
             if(enemy != null)
