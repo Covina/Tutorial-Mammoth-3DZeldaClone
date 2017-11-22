@@ -7,6 +7,7 @@ public class GameSceneController : MonoBehaviour {
 
     [Header("Game")]
     public Player player;
+    public GameCamera gameCamera;
 
     [Header("UI")]
     public GameObject[] hearts;
@@ -53,6 +54,14 @@ public class GameSceneController : MonoBehaviour {
 
                 //Debug.Log(currentDungeon.EnemyCount + "," + currentDungeon.CurrentEnemyCount + "," + clearPercentage);
                 dungeonInfoText.text = "Progress: " + Mathf.FloorToInt(clearPercentage * 100) + " %";
+
+                // Did we just clear it?
+                if(currentDungeon.JustCleared)
+                {
+                    // give it the treasure's game object
+                    gameCamera.FocusOn(currentDungeon.Treasure.gameObject);
+                }
+
             }
 
         } else
@@ -66,4 +75,7 @@ public class GameSceneController : MonoBehaviour {
         
 
 	}
+
+
+
 }
