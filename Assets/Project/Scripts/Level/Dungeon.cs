@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Dungeon : MonoBehaviour {
 
+
     private Enemy[] enemies;
+
+    private Treasure treasure;
+
+    private bool isDungeonClear = false;
 
     private int enemyCount;
     public int EnemyCount
@@ -25,9 +30,13 @@ public class Dungeon : MonoBehaviour {
         enemies = GetComponentsInChildren<Enemy>();
         enemyCount = enemies.Length;
 
-        Debug.Log("Total Enemies: " + enemyCount);
+        //Debug.Log("Total Enemies: " + enemyCount);
 
-	}
+        // Get reference to treasure and disable it
+        treasure = GetComponentInChildren<Treasure>();
+        treasure.gameObject.SetActive(false);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,7 +50,19 @@ public class Dungeon : MonoBehaviour {
             }
         }
 
-        Debug.Log("Current Enemies: " + currentEnemyCount);
+        // Debug.Log("Current Enemies: " + currentEnemyCount);
+
+        if(isDungeonClear == false)
+        {
+            if(currentEnemyCount == 0)
+            {
+                isDungeonClear = true;
+                treasure.gameObject.SetActive(true);
+            }
+        }
+
+
+
     }
 
 
