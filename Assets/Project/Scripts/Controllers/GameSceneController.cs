@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class GameSceneController : MonoBehaviour {
     public GameObject dungeonPanel;
     public Text dungeonInfoText;
 
+    private float resetTimer = 3.0f;
 
     // Use this for initialization
     void Start () {
@@ -73,6 +75,12 @@ public class GameSceneController : MonoBehaviour {
             {
                 hearts[i].SetActive(false);
             }
+
+            resetTimer -= Time.deltaTime;
+            if (resetTimer <= 0.0f) {
+                SceneManager.LoadScene("Menu");
+            }
+
         }
         
 

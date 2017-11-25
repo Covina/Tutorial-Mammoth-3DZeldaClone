@@ -13,9 +13,14 @@ public class Enemy : MonoBehaviour {
     {
         health--;
 
-        if(health <= 0)
+        if (health <= 0)
         {
+            EffectManager.Instance.ApplyEffect(transform.position, EffectManager.Instance.killEffectPrefab);
+
             Destroy(gameObject);
+        } else
+        {
+            EffectManager.Instance.ApplyEffect(transform.position, EffectManager.Instance.hitEffectPrefab);
         }
 
     }
